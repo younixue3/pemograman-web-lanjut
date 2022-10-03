@@ -13,21 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/hello', function () {
-    echo 'Halo Dunia';
-});
-
-Route::get('/hii', function () {
-    echo 'Hii Dunia';
-});
-
-Route::get('/ricko-ganteng', function () {
-    return view('day2.index');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::get('/admin/gallery', [\App\Http\Controllers\AdminController::class, 'gallery'])->name('admin.gallery');
 
 Route::get('/page-one', function () {
     return view('day2.pageOne');

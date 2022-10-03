@@ -1,9 +1,23 @@
-<div class="flex space-x-5">
-    <a href="{{route('home')}}">Home</a>
-    <a href="{{route('pageOne')}}">Halaman 1</a>
-    <a href="{{route('pageTwo')}}">Halaman 2</a>
-    <a href="{{route('pageThree')}}">Halaman 3</a>
-    <a href="{{route('pageFour')}}">Halaman 4</a>1
-    <a href="{{route('page', ['Halaman Depan', 'Halaman Depan'])}}">Halaman Depan</a>
-    <a href="{{route('page', ['Halaman Belakang', 'Halaman Belakang'])}}">Halaman Belakang</a>
+<div class="fixed z-50 w-full">
+    <div class="py-8 backdrop-blur-md bg-gray-900/80">
+        <div class="flex justify-between">
+            <div class="w-96 text-white text-2xl font-bold text-center">Kidspreneurship</div>
+            <div class="grid grid-cols-4 w-96 text-white mr-auto">
+                <div>Home</div>
+                <div @click="openModal">Virtual Expo</div>
+                <div @click="openModal">Tentang</div>
+                <div @click="openModal">Publikasi</div>
+            </div>
+            <div class="w-52">
+                <div class="grid grid-cols-2 gap-3">
+                    <a href="{{ route('admin') }}" class="text-center bg-transparent border-white border-2 text-white rounded-md">
+                        Sign In
+                    </a>
+                    <button class="bg-white border-2 text-black rounded-md">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
