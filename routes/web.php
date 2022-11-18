@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,28 +15,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/login', [\App\Http\Controllers\SecurityController::class, 'login_form'])->name('login.form');
 Route::post('/login_proses', [\App\Http\Controllers\SecurityController::class, 'login'])->name('login');
 Route::middleware('auth')->group(function() {
     Route::resource('admin', \App\Http\Controllers\AdminController::class);
+=======
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+>>>>>>> 372ebda47250df612fb09d7a324de20663b01577
 });
 
-Route::get('/page-one', function () {
-    return view('day2.pageOne');
-})->name('pageOne');
+Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/form', [\App\Http\Controllers\AdminController::class, 'create'])->middleware(['auth', 'verified'])->name('form');
+Route::post('/store', [\App\Http\Controllers\AdminController::class, 'store'])->middleware(['auth', 'verified'])->name('store');
+Route::get('/{id}/edit', [\App\Http\Controllers\AdminController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit');
+Route::post('/update', [\App\Http\Controllers\AdminController::class, 'update'])->middleware(['auth', 'verified'])->name('update');
 
-Route::get('/page-two', function () {
-    return view('day2.pageTwo');
-})->name('pageTwo');
+//Route::get('/dashboard', function () {
+//    return Inertia::render('Dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/page-three', function () {
-    return view('day2.pageThree');
-})->name('pageThree');
-
-Route::get('/page-four', function () {
-    return view('day2.pageFour');
-})->name('pageFour');
-
-Route::get('/page/{title}/{content}', [\App\Http\Controllers\HalamanController::class, 'index'])->name('page');
+require __DIR__.'/auth.php';
