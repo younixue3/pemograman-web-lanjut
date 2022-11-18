@@ -4,16 +4,19 @@
     <div>Gallery</div>
 @endsection
 @section('notification')
-    <div class="fixed bottom-0 right-0 flex-row">
-        @forelse ($errors->all() as $error)
-            <notification-component type="error" message="{{$error}}"></notification-component>
-        @empty
-        @endforelse
-        @if(session()->has('success'))
-            <notification-component type="success" message="{{ session()->get('success') }}"></notification-component>
-        @endif
-        @if(session()->has('error'))
-            <notification-component type="error" message="{{ session()->get('error') }}"></notification-component>
-        @endif
-    </div>
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <div
+                class="m-3 ml-0 md:w-96 text-left border-b-8 mx-auto flex transition-all ease-in-out duration-1000 cursor-pointer">
+                <div class="my-auto w-20 text-center px-0.5">
+                    <i class="fas fa-info text-2xl lg:text-3xl"></i>
+                </div>
+                <div class="px-1 py-2">
+                    <h1 class="text-sm lg:text-base font-raleway">
+                    </h1>
+                    <p class="text-xs">{{ $error }}</p>
+                </div>
+            </div>
+        @endforeach
+    @endif
 @endsection

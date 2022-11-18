@@ -15,7 +15,7 @@
     <div class="text-lg font-normal tracking-tight">
         <div class="py-5 px-1 py-2">
             <div class="py-0.5 my-2 rounded-xl overflow-hidden truncate">
-                <a href="{{route('admin')}}">
+                <a href="{{route('admin.index')}}">
                     <div class="hover:bg-gray-200 px-2 py-1.5 rounded-lg"
                          :class="livehref === dataurl['dashboard'] ? 'bg-gray-300' : 'bg-gray-100'">
                         <div class="flex w-52">
@@ -23,18 +23,6 @@
                                 <i class="fa-solid fa-gauge-high mr-3"></i>
                             </div>
                             <span>Dashboard</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div v-if="is_admin === 'true'" class="py-0.5 my-2 rounded-xl overflow-hidden truncate">
-                <a href="{{route('admin.gallery')}}">
-                    <div class="hover:bg-gray-200 px-2 py-1.5 rounded-lg">
-                        <div class="flex w-52">
-                            <div class="w-10">
-                                <i class="fa-solid fa-images mr-3"></i>
-                            </div>
-                            <span>Gallery</span>
                         </div>
                     </div>
                 </a>

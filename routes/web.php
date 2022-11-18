@@ -15,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about');
-Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-Route::get('/admin/gallery', [\App\Http\Controllers\AdminController::class, 'gallery'])->name('admin.gallery');
+Route::get('/login', [\App\Http\Controllers\SecurityController::class, 'login_form'])->name('login.form');
+Route::post('/login_proses', [\App\Http\Controllers\SecurityController::class, 'login'])->name('login');
+Route::middleware('auth')->group(function() {
+    Route::resource('admin', \App\Http\Controllers\AdminController::class);
+});
 
 Route::get('/page-one', function () {
     return view('day2.pageOne');

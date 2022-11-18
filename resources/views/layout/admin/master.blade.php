@@ -20,7 +20,7 @@
             @yield('content')
         </div>
     </div>
-{{--    @yield('notification')--}}
+    @yield('notification')
     @include('layout.admin.footer')
 </div>
 <style>

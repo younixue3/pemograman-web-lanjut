@@ -10,7 +10,7 @@
             </div>
             <div class="w-52">
                 <div class="grid grid-cols-2 gap-3">
-                    <a href="{{ route('admin') }}" class="text-center bg-transparent border-white border-2 text-white rounded-md">
+                    <a href="{{ route('admin.index') }}" class="text-center bg-transparent border-white border-2 text-white rounded-md">
                         Sign In
                     </a>
                     <button class="bg-white border-2 text-black rounded-md">
