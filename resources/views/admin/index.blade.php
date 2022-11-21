@@ -54,7 +54,6 @@
             </thead>
             <tbody class="bg-white divide-y-2 divide-gray-200">
             @foreach($users as $key => $value)
-<<<<<<< HEAD
                 <tr class="hover:bg-blue-100 transition-all duration-200">
                     <td class="py-1 pl-4">{{$value->id}}</td>
                     <td class="py-1 pl-4">
@@ -87,36 +86,12 @@
                         </div>
                     </td>
                 </tr>
-=======
-            <tr class="hover:bg-blue-100 transition-all duration-200">
-                <td class="py-1 pl-4">{{$value->id}}</td>
-                <td class="py-1 pl-4">
-                    <div class="flex items-center">
-                        <img class="h-8 w-8 mr-2 rounded-full"
-                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                             alt="">
-                        <div class="text-left my-auto">
-                            <div class="text-sm text-gray-500">{{$value->name}}</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="py-1">{{$value->email}}</td>
-                <td class="py-1">{{$value->created_at}}</td>
-                <td class="py-1">
-                    <div>
-                        <button class="bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i class="fas fa-edit m-auto"></i></button><button class="bg-indigo-500 hover:bg-indigo-600 text-white text-center w-9 h-8"><i class="fas fa-trash-alt"></i></button><button class="bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-r-md w-9 h-8"><i class="fas fa-eye"></i></button>
-                    </div>
-                </td>
-            </tr>
->>>>>>> 372ebda47250df612fb09d7a324de20663b01577
             @endforeach
             </tbody>
         </table>
         <div class="mt-5">
             {{$users->links()}}
         </div>
-<<<<<<< HEAD
-=======
     </div>
 @endsection
 @section('notification')

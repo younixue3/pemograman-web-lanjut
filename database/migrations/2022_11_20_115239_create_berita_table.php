@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('m2m_user_tipe_user', function (Blueprint $table) {
+        Schema::create('berita', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('tipe_user_id');
+            $table->string('judul', 180);
+            $table->text('isi');
+            $table->text('thumbnail');
+            $table->unsignedBigInteger('user');
+            $table->foreign('user')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m2m_user_tipe_user');
+        Schema::dropIfExists('berita');
     }
 };

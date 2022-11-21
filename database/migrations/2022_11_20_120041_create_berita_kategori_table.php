@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tipe_user', function (Blueprint $table) {
+        Schema::create('berita_kategori', function (Blueprint $table) {
             $table->id();
-            $table->char('name', 30);
+            $table->unsignedBigInteger('berita');
+            $table->unsignedBigInteger('kategori');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipe_user');
+        Schema::dropIfExists('berita_kategori');
     }
 };

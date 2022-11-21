@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
              'password' => Hash::make('admin')
          ]);
          $this->call([
-             TipeUserSeeder::class,
-             M2M_UserTipeUserSeeder::class,
          ]);
     }
 }

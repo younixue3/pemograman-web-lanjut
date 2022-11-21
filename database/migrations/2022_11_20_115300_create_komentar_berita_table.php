@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('komentar_produk', function (Blueprint $table) {
+        Schema::create('komentar_berita', function (Blueprint $table) {
             $table->id();
-            $table->text('isi');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('produk_id');
+            $table->string('isi', 255);
+            $table->unsignedBigInteger('user');
+            $table->foreign('user')->references('id')->on('users');
+            $table->unsignedBigInteger('berita');
+            $table->foreign('berita')->references('id')->on('berita');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('komentar_produk');
+        Schema::dropIfExists('komentar_berita');
     }
 };

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdminRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(5);
-        $compact = compact('users');
-        return view('admin.index', $compact);
+        //
     }
 
     /**
@@ -28,7 +23,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.form');
+        //
     }
 
     /**
@@ -37,14 +32,9 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminRequest $request)
+    public function store(Request $request)
     {
-        $user = User::create([
-            'name' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-        return redirect(route('dashboard'))->with('success', 'Insert Data Successfully');
+        //
     }
 
     /**
@@ -66,10 +56,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        $compact = compact('user');
-//        dd($user);
-        return view('admin.form', $compact);
+        //
     }
 
     /**
@@ -79,14 +66,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect(route('admin.index'))->with('success', 'Insert Data Successfully');
+        //
     }
 
     /**
@@ -97,7 +79,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-        return redirect(route('admin.index'))->with('success', 'Insert Data Successfully');
+        //
     }
 }

@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategori', function (Blueprint $table) {
+        Schema::create('komentar_produk', function (Blueprint $table) {
             $table->id();
-            $table->char('name', 30);
+            $table->string('isi', 255);
+            $table->unsignedBigInteger('user');
+            $table->foreign('user')->references('id')->on('users');
+            $table->unsignedBigInteger('produk');
+            $table->foreign('produk')->references('id')->on('produk');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('komentar_produk');
     }
 };
