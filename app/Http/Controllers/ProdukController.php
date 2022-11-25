@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -13,7 +14,9 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        $data = Produk::paginate(10);
+        $compact = compact('data');
+        return view('admin.produk.index', $compact);
     }
 
     /**
@@ -23,7 +26,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.produk.form_input');
     }
 
     /**
@@ -34,7 +37,11 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Produk::create([
+            'name' => $request->nama,
+            'qty' => $request->qty
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +63,10 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produk = Produk::find($id);
+        $compact = compact('produk');
+//        dd($user);
+        return view('admin.produk.form', $compact);
     }
 
     /**
@@ -68,7 +78,11 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Produk::find($id)->update([
+            'name' => $request->nama,
+            'qty' => $request->qty,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +93,7 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Produk::find($id)->delete();
+        return redirect()->back();
     }
 }

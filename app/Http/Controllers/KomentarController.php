@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use App\Models\KomentarBerita;
 use Illuminate\Http\Request;
 
 class KomentarController extends Controller
@@ -13,7 +15,9 @@ class KomentarController extends Controller
      */
     public function index()
     {
-        //
+        $data = KomentarBerita::paginate(10);
+        $compact = compact('data');
+        return view('admin.komentarBerita.index', $compact);
     }
 
     /**
@@ -23,7 +27,9 @@ class KomentarController extends Controller
      */
     public function create()
     {
-        //
+        $beritas = Berita::all();
+        $compact = compact('beritas');
+        return view('admin.komentarBerita.form_input', $compact);
     }
 
     /**
@@ -34,7 +40,12 @@ class KomentarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        KomentarBerita::create([
+            'isi' => $request->isi_komen,
+            'user' => auth()->user()->id,
+            'berita' => $request->berita
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +67,10 @@ class KomentarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $komentarberita = KomentarBerita::find($id);
+        $beritas = Berita::all();
+        $compact = compact('komentarberita', 'beritas');
+        return view('admin.komentarBerita.form', $compact);
     }
 
     /**
@@ -68,7 +82,12 @@ class KomentarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        KomentarBerita::find($id)->update([
+            'isi' => $request->isi_komen,
+            'user' => auth()->user()->id,
+            'berita' => $request->berita
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +98,7 @@ class KomentarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        KomentarBerita::find($id)->delete();
+        return redirect()->back();
     }
 }

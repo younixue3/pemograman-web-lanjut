@@ -46,7 +46,9 @@
             <thead class="bg-gray-100">
             <tr>
                 <th class="py-1">#</th>
-                <th class="py-1">Nama Kategori</th>
+                <th class="py-1">Isi Komen</th>
+                <th class="py-1">User</th>
+                <th class="py-1">Berita</th>
                 <th class="py-1">Action</th>
             </tr>
             </thead>
@@ -54,14 +56,25 @@
             @foreach($data as $key => $value)
                 <tr class="hover:bg-blue-100 transition-all duration-200">
                     <td class="py-1 pl-4">{{$value->id}}</td>
-                    <td class="py-1">{{$value->nama}}</td>
-                    <form hidden id="formdelete" action="{{route('berita.destroy', $value->id)}}" method="post">
+                    <td class="py-1">{{$value->isi}}</td>
+                    <td class="py-1 pl-4">
+                        <div class="flex items-center">
+                            <img class="h-8 w-8 mr-2 rounded-full"
+                                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                 alt="">
+                            <div class="text-left my-auto">
+                                <div class="text-sm text-gray-500">{{\App\Models\User::find($value->user)->name}}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-1">{{\App\Models\Berita::find($value->berita)->judul}}</td>
+                    <form hidden id="formdelete" action="{{route('komentar_berita.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')
                     </form>
                     <td class="py-1">
                         <div>
-                            <a href="{{route('berita.edit', $value->id)}}"
+                            <a href="{{route('komentar_berita.edit', $value->id)}}"
                                class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i
                                     class="fas fa-edit m-auto"></i></a>
                             <button form="formdelete" type="submit"

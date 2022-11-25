@@ -28,7 +28,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('admin.berita.add');
+        return view('admin.berita.form_input');
     }
 
     /**
@@ -40,11 +40,12 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $filename = getFilename::getFilename($request);
-        Storage::disk('upload')->putFileAs('fasilitas_assets', $request->fileupload, $filename['filename']);
+        Storage::disk('upload')->putFileAs('thumbnail', $request->fileupload, $filename['filename']);
+//        dd($filename);
         $berita = Berita::create([
             'judul' => $request->judul,
             'isi' => $request->isi,
-            'thumbnail' => $request->$filename['filename'],
+            'thumbnail' => $filename['filename'],
             'user' => auth()->user()->id,
         ]);
         return redirect()->back();
@@ -69,7 +70,10 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $berita = Berita::find($id);
+        $compact = compact('berita');
+//        dd($user);
+        return view('admin.berita.form', $compact);
     }
 
     /**
@@ -81,7 +85,24 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->fileupload) {
+            $filename = getFilename::getFilename($request);
+            Storage::disk('upload')->putFileAs('thumbnail', $request->fileupload, $filename['filename']);
+            $berita = Berita::find($id)->update([
+                'judul' => $request->judul,
+                'isi' => $request->isi,
+                'thumbnail' => $filename['filename'],
+                'user' => auth()->user()->id,
+            ]);
+        } else {
+            $berita = Berita::find($id)->update([
+                'judul' => $request->judul,
+                'isi' => $request->isi,
+                'user' => auth()->user()->id,
+            ]);
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -92,6 +113,7 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Berita::find($id)->delete();
+        return redirect()->back();
     }
 }

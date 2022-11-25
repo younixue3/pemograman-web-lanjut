@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.form');
+        return view('admin.form_input');
     }
 
     /**
