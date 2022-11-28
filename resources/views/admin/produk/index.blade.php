@@ -48,6 +48,7 @@
                 <th class="py-1">#</th>
                 <th class="py-1">Nama Produk</th>
                 <th class="py-1">Qty</th>
+                <th class="py-1">Author</th>
                 <th class="py-1">Action</th>
             </tr>
             </thead>
@@ -57,6 +58,16 @@
                     <td class="py-1 pl-4">{{$value->id}}</td>
                     <td class="py-1">{{$value->name}}</td>
                     <td class="py-1">{{$value->qty}}</td>
+                    <td class="py-1 pl-4">
+                        <div class="flex items-center">
+                            <img class="h-8 w-8 mr-2 rounded-full"
+                                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                 alt="">
+                            <div class="text-left my-auto">
+                                <div class="text-sm text-gray-500">{{$value->author->name}}</div>
+                            </div>
+                        </div>
+                    </td>
                     <form hidden id="formdelete" action="{{route('produk.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')

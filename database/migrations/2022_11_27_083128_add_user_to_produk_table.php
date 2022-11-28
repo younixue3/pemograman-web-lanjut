@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('berita', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul', 180);
-            $table->text('isi');
-            $table->text('thumbnail');
-            $table->Integer('user_id');
-            $table->timestamps();
+        Schema::table('produk', function (Blueprint $table) {
+            $table->unsignedBigInteger('user');
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('berita');
+        Schema::table('produk', function (Blueprint $table) {
+            //
+        });
     }
 };

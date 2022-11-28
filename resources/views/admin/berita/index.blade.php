@@ -49,6 +49,7 @@
                 <th class="py-1">Judul</th>
                 <th class="py-1">Isi</th>
                 <th class="py-1">Thumbnail</th>
+                <th class="py-1">Kategori</th>
                 <th class="py-1">User</th>
                 <th class="py-1">Action</th>
             </tr>
@@ -62,13 +63,20 @@
                     <td class="py-1">
                         <img class="h-20 w-20 object-cover" src="{{asset('Upload/thumbnail/'.$value->thumbnail)}}">
                     </td>
+                    <td class="py-1">
+                        <div class="h-full">
+                            @foreach($value->kategori_berita as $kategori)
+                                <div class="m-auto w-20 bg-green-400 rounded-xl px-1">{{$kategori->kategori_berita->nama}}</div>
+                            @endforeach
+                        </div>
+                    </td>
                     <td class="py-1 pl-4">
                         <div class="flex items-center">
                             <img class="h-8 w-8 mr-2 rounded-full"
                                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                  alt="">
                             <div class="text-left my-auto">
-                                <div class="text-sm text-gray-500">{{\App\Models\User::find($value->user)->name}}</div>
+                                <div class="text-sm text-gray-500">{{$value->author->name}}</div>
                             </div>
                         </div>
                     </td>

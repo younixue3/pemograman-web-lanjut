@@ -26,6 +26,50 @@
                         </div>
                     </div>
                 </a>
+                <a href="{{route('berita.index')}}">
+                    <div class="hover:bg-gray-200 px-2 py-1.5 rounded-lg"
+                         :class="livehref === dataurl['dashboard'] ? 'bg-gray-300' : 'bg-gray-100'">
+                        <div class="flex w-52">
+                            <div class="w-10">
+                                <i class="fa-solid fa-gauge-high mr-3"></i>
+                            </div>
+                            <span>Berita</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{route('produk.index')}}">
+                    <div class="hover:bg-gray-200 px-2 py-1.5 rounded-lg"
+                         :class="livehref === dataurl['dashboard'] ? 'bg-gray-300' : 'bg-gray-100'">
+                        <div class="flex w-52">
+                            <div class="w-10">
+                                <i class="fa-solid fa-gauge-high mr-3"></i>
+                            </div>
+                            <span>Produk</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{route('kategori.index')}}">
+                    <div class="hover:bg-gray-200 px-2 py-1.5 rounded-lg"
+                         :class="livehref === dataurl['dashboard'] ? 'bg-gray-300' : 'bg-gray-100'">
+                        <div class="flex w-52">
+                            <div class="w-10">
+                                <i class="fa-solid fa-gauge-high mr-3"></i>
+                            </div>
+                            <span>Kategori</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{route('komentar_berita.index')}}">
+                    <div class="hover:bg-gray-200 px-2 py-1.5 rounded-lg"
+                         :class="livehref === dataurl['dashboard'] ? 'bg-gray-300' : 'bg-gray-100'">
+                        <div class="flex w-52">
+                            <div class="w-10">
+                                <i class="fa-solid fa-gauge-high mr-3"></i>
+                            </div>
+                            <span>Komentar Berita</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

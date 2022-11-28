@@ -38,8 +38,9 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         Produk::create([
-            'name' => $request->nama,
-            'qty' => $request->qty
+            'name' => $request->name,
+            'qty' => $request->qty,
+            'user' => auth()->user()->id
         ]);
         return redirect()->back();
     }
@@ -81,6 +82,7 @@ class ProdukController extends Controller
         Produk::find($id)->update([
             'name' => $request->nama,
             'qty' => $request->qty,
+            'user' => auth()->user()->id
         ]);
         return redirect()->back();
     }

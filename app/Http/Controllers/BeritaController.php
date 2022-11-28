@@ -46,7 +46,7 @@ class BeritaController extends Controller
             'judul' => $request->judul,
             'isi' => $request->isi,
             'thumbnail' => $filename['filename'],
-            'user' => auth()->user()->id,
+            'user_id' => auth()->user()->id,
         ]);
         return redirect()->back();
     }
@@ -92,13 +92,13 @@ class BeritaController extends Controller
                 'judul' => $request->judul,
                 'isi' => $request->isi,
                 'thumbnail' => $filename['filename'],
-                'user' => auth()->user()->id,
+                'user_id' => auth()->user()->id,
             ]);
         } else {
             $berita = Berita::find($id)->update([
                 'judul' => $request->judul,
                 'isi' => $request->isi,
-                'user' => auth()->user()->id,
+                'user_id' => auth()->user()->id,
             ]);
         }
 

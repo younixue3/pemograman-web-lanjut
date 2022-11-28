@@ -9,7 +9,7 @@
                 Nama
             </label>
             <div class="flex rounded-md shadow-sm">
-                <input type="text" name="nama" class="flex-1 block w-full rounded-xl focus:outline-none text-lg px-3 py-1 border border-gray-300">
+                <input type="text" name="name" class="flex-1 block w-full rounded-xl focus:outline-none text-lg px-3 py-1 border border-gray-300">
             </div>
             <label class="block text-lg font-medium text-gray-700">
                 Qty
