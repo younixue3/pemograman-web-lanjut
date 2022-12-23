@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helper\getFilename;
 use App\Models\Berita;
+use App\Models\Kategori;
+use App\Models\KategoriBerita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,9 +28,11 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.berita.form_input');
+        $kategori = Kategori::all();
+        $compact = compact('kategori');
+        return view('admin.berita.form_input', $compact);
     }
 
     /**
@@ -48,6 +52,12 @@ class BeritaController extends Controller
             'thumbnail' => $filename['filename'],
             'user_id' => auth()->user()->id,
         ]);
+        foreach ($request->kategori as $item) {
+            KategoriBerita::create([
+               'berita' => $berita->id,
+                'kategori' => $item
+            ]);
+        }
         return redirect()->back();
     }
 

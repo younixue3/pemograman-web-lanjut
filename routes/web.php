@@ -18,12 +18,15 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/login', [\App\Http\Controllers\SecurityController::class, 'login_form'])->name('login.form');
 Route::post('/login_proses', [\App\Http\Controllers\SecurityController::class, 'login'])->name('login');
-Route::middleware('auth')->group(function() {
+Route::resource('berita', \App\Http\Controllers\Front\BeritaController::class);
+Route::resource('produk', \App\Http\Controllers\Front\ProdukController::class);
+Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function() {
     Route::resource('admin', \App\Http\Controllers\AdminController::class);
     Route::resource('berita', \App\Http\Controllers\BeritaController::class);
     Route::resource('kategori', \App\Http\Controllers\KategoriController::class);
     Route::resource('produk', \App\Http\Controllers\ProdukController::class);
     Route::resource('komentar_berita', \App\Http\Controllers\KomentarController::class);
+    Route::resource('komentar_produk', \App\Http\Controllers\KomentarProdukController::class);
     Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/form', [\App\Http\Controllers\AdminController::class, 'create'])->middleware(['auth', 'verified'])->name('form');
     Route::post('/store', [\App\Http\Controllers\AdminController::class, 'store'])->middleware(['auth', 'verified'])->name('store');

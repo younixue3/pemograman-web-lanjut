@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Models\KomentarProduk;
+use App\Http\Controllers\Controller;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
-class KomentarProdukController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class KomentarProdukController extends Controller
      */
     public function index()
     {
-        //
+        $data = Produk::paginate(10);
+        $compact = compact('data');
+        return view('Front.produk.index', $compact);
     }
 
     /**
@@ -35,13 +38,7 @@ class KomentarProdukController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
-        KomentarProduk::create([
-            'isi' => $request->isi,
-            'user' => auth()->user()->id,
-            'produk' => $request->produk_id
-        ]);
-        return redirect()->back();
+        //
     }
 
     /**
@@ -52,7 +49,9 @@ class KomentarProdukController extends Controller
      */
     public function show($id)
     {
-        //
+        $produk = Produk::find($id);
+        $compact = compact('produk');
+        return view('Front.produk.show', $compact);
     }
 
     /**

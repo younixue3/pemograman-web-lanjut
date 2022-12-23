@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Models\KomentarProduk;
+use App\Http\Controllers\Controller;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
-class KomentarProdukController extends Controller
+class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class KomentarProdukController extends Controller
      */
     public function index()
     {
-        //
+        $data = Berita::paginate(10);
+        $compact = compact('data');
+        return view('Front.berita.index', $compact);
     }
 
     /**
@@ -35,13 +38,7 @@ class KomentarProdukController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
-        KomentarProduk::create([
-            'isi' => $request->isi,
-            'user' => auth()->user()->id,
-            'produk' => $request->produk_id
-        ]);
-        return redirect()->back();
+        //
     }
 
     /**
@@ -52,7 +49,9 @@ class KomentarProdukController extends Controller
      */
     public function show($id)
     {
-        //
+        $berita = Berita::find($id);
+        $compact = compact('berita');
+        return view('Front.berita.show', $compact);
     }
 
     /**

@@ -20,4 +20,9 @@ class Berita extends Model
     {
         return $this->hasMany(KategoriBerita::class, 'berita', 'id');
     }
+
+    public function komentars()
+    {
+        return $this->hasMany(KomentarBerita::class, 'berita', 'id');
+    }
 }

@@ -9,6 +9,7 @@ class KategoriBerita extends Model
 {
     use HasFactory;
     protected $table = 'berita_kategori';
+    protected $guarded = [];
 
     public function kategori_berita()
     {

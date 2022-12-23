@@ -12,4 +12,9 @@
 @include('layout.footer')
 <!-- End Content -->
 </body>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>
 </html>

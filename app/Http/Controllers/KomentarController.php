@@ -40,10 +40,11 @@ class KomentarController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         KomentarBerita::create([
-            'isi' => $request->isi_komen,
+            'isi' => $request->isi,
             'user' => auth()->user()->id,
-            'berita' => $request->berita
+            'berita' => $request->berita_id
         ]);
         return redirect()->back();
     }

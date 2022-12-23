@@ -3,7 +3,7 @@
 @section('content')
     <div>Welcome to Admin</div>
     <div class="border bg-gray-100 shadow-md text-gray-800 rounded-xl">
-        <form class="p-5" action="{{route('berita.store')}}" method="post" enctype="multipart/form-data">
+        <form class="p-5" action="{{route('dashboard.berita.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label class="block text-lg font-medium text-gray-700">
                 Judul
@@ -17,6 +17,16 @@
             <div class="flex rounded-md shadow-sm">
                 <textarea name="isi" class="flex-1 block w-full rounded-xl h-52 resize-none focus:outline-none text-lg px-3 py-1 border border-gray-300"></textarea>
 {{--                <input type="text" name="name" class="flex-1 block w-full rounded-xl focus:outline-none text-lg px-3 py-1 border border-gray-300" placeholder="Jane">--}}
+            </div>
+            <label class="block text-lg font-medium text-gray-700">
+                Kategori
+            </label>
+            <div class="flex rounded-md shadow-sm">
+                <select class="flex-1 block w-full rounded-xl focus:outline-none text-lg px-3 py-1 border border-gray-300" name="kategori[]" multiple="multiple">
+                    @foreach($kategori as $key => $value)
+                        <option value="{{$value->id}}">{{$value->nama}}</option>
+                    @endforeach
+                </select>
             </div>
             <label class="block text-lg font-medium text-gray-700">
                 Thumbnail

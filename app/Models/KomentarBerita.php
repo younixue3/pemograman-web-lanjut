@@ -10,4 +10,9 @@ class KomentarBerita extends Model
     use HasFactory;
     protected $table = 'komentar_berita';
     protected $guarded = [];
+
+    public function komentator()
+    {
+        return $this->belongsTo(User::class, 'user');
+    }
 }

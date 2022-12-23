@@ -2,44 +2,8 @@
 @section('title', 'Admin')
 @section('content')
     <div>Welcome to Admin</div>
-    <div class="grid grid-cols-1 md:grid-cols-6 lg: grid-cols-12 gap-x-5 gap-y-5 my-5">
-        <div class="md:col-span-3 bg-gray-100 shadow-md text-gray-800 rounded-xl flex">
-            <div class="w-1/3 text-4xl p-5">
-                <i class="bg-purple-500 text-white rounded-full px-5 py-4 fas fa-shopping-bag"></i>
-            </div>
-            <div class="w-2/3 ml-10 my-auto">
-                <span class="text-4xl">236</span>
-                <div class="-mt-3 text-lg">Orders<i class="mx-2 text-green-500 fas fa-caret-up"></i></div>
-            </div>
-        </div>
-        <div class="md:col-span-3 bg-gray-100 shadow-md text-gray-800 rounded-xl flex">
-            <div class="w-1/3 text-4xl p-5">
-                <i class="bg-green-500 text-white rounded-full px-3 py-4 fas fa-users"></i>
-            </div>
-            <div class="w-2/3 ml-10 my-auto">
-                <span class="text-4xl">56</span>
-                <div class="-mt-3 text-lg">Users<i class="mx-2 text-green-500 fas fa-caret-up"></i></div>
-            </div>
-        </div>
-        <div class="md:col-span-3 bg-gray-100 shadow-md text-gray-800 rounded-xl flex">
-            <div class="w-1/3 text-4xl p-5">
-                <i class="bg-blue-500 text-white rounded-full px-4 py-4 fas fa-envelope"></i>
-            </div>
-            <div class="w-2/3 ml-10 my-auto">
-                <span class="text-4xl">12</span>
-                <div class="-mt-3 text-lg">Emails<i
-                        class="mx-2 text-red-500 fas fa-caret-up transform rotate-180"></i></div>
-            </div>
-        </div>
-        <div class="md:col-span-3 bg-gray-100 shadow-md text-gray-800 rounded-xl flex">
-            <div class="w-1/3 text-4xl p-5">
-                <i class="bg-yellow-500 text-white rounded-full px-3.5 py-4 fas fa-id-card-alt"></i>
-            </div>
-            <div class="w-2/3 ml-10 my-auto">
-                <span class="text-4xl">36</span>
-                <div class="-mt-3 text-lg">Subscribers<i class="mx-2 text-green-500 fas fa-caret-up"></i></div>
-            </div>
-        </div>
+    <div class="my-10">
+        <a class="bg-emerald-500 text-white px-4 py-2 rounded-lg" href="{{route('dashboard.berita.create')}}">Add</a>
     </div>
     <div class="border bg-gray-100 shadow-md text-gray-800 rounded-xl">
         <table class="w-full text-center">
@@ -80,13 +44,13 @@
                             </div>
                         </div>
                     </td>
-                    <form hidden id="formdelete" action="{{route('berita.destroy', $value->id)}}" method="post">
+                    <form hidden id="formdelete" action="{{route('dashboard.berita.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')
                     </form>
                     <td class="py-1">
                         <div>
-                            <a href="{{route('berita.edit', $value->id)}}"
+                            <a href="{{route('dashboard.berita.edit', $value->id)}}"
                                class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i
                                     class="fas fa-edit m-auto"></i></a>
                             <button form="formdelete" type="submit"
