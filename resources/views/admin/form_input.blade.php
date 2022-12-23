@@ -3,7 +3,7 @@
 @section('content')
     <div>Welcome to Admin</div>
     <div class="border bg-gray-100 shadow-md text-gray-800 rounded-xl">
-        <form class="p-5" action="{{route('admin.store')}}" method="post" enctype="multipart/form-data">
+        <form class="p-5" action="{{route('dashboard.admin.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label class="block text-lg font-medium text-gray-700">
                 Username

@@ -68,16 +68,16 @@
                     </td>
                     <td class="py-1">{{$value->email}}</td>
                     <td class="py-1">{{$value->created_at}}</td>
-                    <form hidden id="formdelete" action="{{route('admin.destroy', $value->id)}}" method="post">
+                    <form hidden id="formdelete" action="{{route('dashboard.admin.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')
                     </form>
                     <td class="py-1">
                         <div>
-                            <a href="{{route('admin.edit', $value->id)}}"
+                            <a href="{{route('dashboard.admin.edit', $value->id)}}"
                                class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i
                                     class="fas fa-edit m-auto"></i></a>
-                            <button form="formdelete" type="submit" href="{{route('admin.destroy', $value->id)}}"
+                            <button form="formdelete" type="submit"
                                     class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center w-9 h-8">
                                 <i class="fas fa-trash-alt"></i></button>
                             <a href="#"
