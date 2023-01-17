@@ -38,9 +38,9 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         Kategori::create([
-            'nama' => $request->nama
+            'nama' => $request->nama,
         ]);
-        return redirect()->back();
+        return redirect(route('dashboard.kategori.index'));
     }
 
     /**
@@ -80,7 +80,7 @@ class KategoriController extends Controller
          Kategori::find($id)->update([
             'nama' => $request->nama,
         ]);
-        return redirect()->back();
+        return redirect(route('dashboard.kategori.index'));
     }
 
     /**

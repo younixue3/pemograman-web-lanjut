@@ -58,7 +58,7 @@ class BeritaController extends Controller
                 'kategori' => $item
             ]);
         }
-        return redirect()->back();
+        return redirect(route('dashboard.berita.index'));
     }
 
     /**
@@ -112,7 +112,7 @@ class BeritaController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect(route('dashboard.berita.index'));
     }
 
     /**
@@ -124,6 +124,6 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         Berita::find($id)->delete();
-        return redirect()->back();
+        return redirect(route('dashboard.berita.index'));
     }
 }

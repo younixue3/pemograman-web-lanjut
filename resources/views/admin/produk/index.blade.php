@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </td>
-                    <form hidden id="formdelete" action="{{route('dashboard.produk.destroy', $value->id)}}" method="post">
+                    <form hidden id="formdelete{{$value->id}}" action="{{route('dashboard.produk.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')
                     </form>
@@ -41,7 +41,7 @@
                             <a href="{{route('dashboard.produk.edit', $value->id)}}"
                                class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i
                                     class="fas fa-edit m-auto"></i></a>
-                            <button form="formdelete" type="submit"
+                            <button form="formdelete{{$value->id}}" type="submit"
                                     class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center w-9 h-8">
                                 <i class="fas fa-trash-alt"></i></button>
                             <a href="#"

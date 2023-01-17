@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('isi', 255);
             $table->unsignedBigInteger('user');
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('produk');
-            $table->foreign('produk')->references('id')->on('produk');
+            $table->foreign('produk')->references('id')->on('produk')->onDelete('cascade');
             $table->timestamps();
         });
     }

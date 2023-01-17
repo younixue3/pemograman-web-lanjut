@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('berita_kategori', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('berita');
-            $table->unsignedBigInteger('kategori');
+            $table->unsignedBigInteger('berita')->onDelete('cascade');
+            $table->unsignedBigInteger('kategori')->onDelete('cascade');
             $table->timestamps();
         });
     }

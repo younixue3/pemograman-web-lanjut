@@ -42,7 +42,7 @@ class ProdukController extends Controller
             'qty' => $request->qty,
             'user' => auth()->user()->id
         ]);
-        return redirect()->back();
+        return redirect(route('dashboard.produk.index'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ProdukController extends Controller
             'qty' => $request->qty,
             'user' => auth()->user()->id
         ]);
-        return redirect()->back();
+        return redirect(route('dashboard.produk.index'));
     }
 
     /**
@@ -96,6 +96,6 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         Produk::find($id)->delete();
-        return redirect()->back();
+        return redirect(route('dashboard.produk.index'));
     }
 }

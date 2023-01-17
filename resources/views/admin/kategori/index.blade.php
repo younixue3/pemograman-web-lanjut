@@ -19,16 +19,16 @@
                 <tr class="hover:bg-blue-100 transition-all duration-200">
                     <td class="py-1 pl-4">{{$value->id}}</td>
                     <td class="py-1">{{$value->nama}}</td>
-                    <form hidden id="formdelete" action="{{route('dashboard.berita.destroy', $value->id)}}" method="post">
+                    <form hidden id="formdelete{{$value->id}}" action="{{route('dashboard.kategori.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')
                     </form>
                     <td class="py-1">
                         <div>
-                            <a href="{{route('dashboard.berita.edit', $value->id)}}"
+                            <a href="{{route('dashboard.kategori.edit', $value->id)}}"
                                class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i
                                     class="fas fa-edit m-auto"></i></a>
-                            <button form="formdelete" type="submit"
+                            <button form="formdelete{{$value->id}}" type="submit"
                                     class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center w-9 h-8">
                                 <i class="fas fa-trash-alt"></i></button>
                             <a href="#"

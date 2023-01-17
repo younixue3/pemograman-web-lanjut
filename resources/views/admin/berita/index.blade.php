@@ -23,14 +23,18 @@
                 <tr class="hover:bg-blue-100 transition-all duration-200">
                     <td class="py-1 pl-4">{{$value->id}}</td>
                     <td class="py-1">{{$value->judul}}</td>
-                    <td class="py-1">{{$value->isi}}</td>
+                    <td class="py-1 w-60 overflow-hidden">
+                        <div class="h-60">
+                            {{$value->isi}}
+                        </div>
+                    </td>
                     <td class="py-1">
                         <img class="h-20 w-20 object-cover" src="{{asset('Upload/thumbnail/'.$value->thumbnail)}}">
                     </td>
                     <td class="py-1">
                         <div class="h-full">
                             @foreach($value->kategori_berita as $kategori)
-                                <div class="m-auto w-20 bg-green-400 rounded-xl px-1">{{$kategori->kategori_berita->nama}}</div>
+                                <div class="m-auto w-20 bg-green-400 rounded-xl px-1">{{$kategori->kategori_berita ? $kategori->kategori_berita->nama : ''}}</div>
                             @endforeach
                         </div>
                     </td>
@@ -44,7 +48,7 @@
                             </div>
                         </div>
                     </td>
-                    <form hidden id="formdelete" action="{{route('dashboard.berita.destroy', $value->id)}}" method="post">
+                    <form hidden id="formdelete{{$value->id}}" action="{{route('dashboard.berita.destroy', $value->id)}}" method="post">
                         @csrf
                         @method('delete')
                     </form>
@@ -53,7 +57,7 @@
                             <a href="{{route('dashboard.berita.edit', $value->id)}}"
                                class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center rounded-l-md w-9 h-8"><i
                                     class="fas fa-edit m-auto"></i></a>
-                            <button form="formdelete" type="submit"
+                            <button form="formdelete{{$value->id}}" type="submit"
                                     class="py-1 px-2 bg-indigo-500 hover:bg-indigo-600 text-white text-center w-9 h-8">
                                 <i class="fas fa-trash-alt"></i></button>
                             <a href="#"
